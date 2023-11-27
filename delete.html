@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Task</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(https://images.pexels.com/photos/5088017/pexels-photo-5088017.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+            /* background-image: url(https://img.freepik.com/premium-photo/colored-pencils-sheet-notes-lie-blue-background-top-view-background-todo-list-back-school_230115-2414.jpg); */
+            background-position: 0px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .delete-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: inline-block; /* Align the form in the center */
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        a:hover {
+            color: #4caf50;
+        }
+
+        input[type="submit"] {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="delete-container">
+        <p>Are you sure you want to delete <i>{{ task_name }}</i>?</p>
+        <form method="POST" action="{% url 'delete' task.id %}">
+            {% csrf_token %}
+            <a href="/">Cancel</a>
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+</body>
+
+</html>
